@@ -1,6 +1,6 @@
 import pick from 'lodash.pick';
-import { IGoogleService } from '../../../IGoogleService';
-import { ITranslateRepository } from '../../../ITranslateRepository';
+import { IGoogleService } from '../../../infra/google/interface.google.service';
+import { ITranslateRepository } from '@/infra/repository/interface.translate.repository';
 import { TranslationInput } from '../../../IUseCaseTranslation';
 import { Translation } from '../../../models/Translation';
 import { TranslationService } from './translation.service';
@@ -26,12 +26,12 @@ const googleErr = new Error('Google');
 const notFoundItem = new Error('Not found item');
 
 class MockGoogleService implements IGoogleService {
-    async translate(source: string, destination: string, text: string): Promise<Translation> {
+    async translate(source: string, destination: string, text: string): Promise<string> {
         const dataSet = [translationByGoogle] as Translation[];
 
         const firstItem = dataSet.find((item) => (item.source === source && item.destination === destination && item.text === text))
         
-        if (firstItem) return firstItem;
+        if (firstItem) return firstItem.translatedText;
 
         throw googleErr;
     }
@@ -48,7 +48,7 @@ class MockTranslateRepository implements ITranslateRepository {
         return null as any as Translation;
     }
 
-    async create(input: TranslationInput): Promise<Translation> {
+    async add(input: TranslationInput): Promise<Translation> {
         return input as Translation;
     }
 

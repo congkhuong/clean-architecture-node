@@ -1,13 +1,18 @@
-import { Repository } from "typeorm";
-import { ITranslateRepository } from "../../ITranslateRepository";
+import { DataSource, Repository } from "typeorm";
+import { ITranslateRepository } from "@/infra/repository/interface.translate.repository";
 import { TranslationInput } from "../../IUseCaseTranslation";
 import { Translation } from "../../models/Translation";
+import { Service } from "typedi";
+import { DBConnector } from "../../data-source";
 
+@Service()
 export class TranslateRepository implements ITranslateRepository {
-    constructor(
-        private repo: Repository<Translation>,
-    ) {}
+    private readonly repo: Repository<Translation>; 
 
+    public constructor(dbConnector: DBConnector) {
+        this.repo = dbConnector.source.getRepository(Translation);
+    }
+    
     async getTranslate(input: TranslationInput): Promise<Translation | null> {
         return this.repo.findOne({ where: {
             source: input.source,
@@ -16,7 +21,7 @@ export class TranslateRepository implements ITranslateRepository {
         }});
     }
 
-    create(input: any): Promise<Translation> {
+    add(input: any): Promise<Translation> {
         return this.repo.save(input);
     }
 
@@ -24,4 +29,3 @@ export class TranslateRepository implements ITranslateRepository {
         return this.repo.find();
     }
 }
-

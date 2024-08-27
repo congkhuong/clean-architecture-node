@@ -1,18 +1,17 @@
+import "reflect-metadata";
 import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
-import "reflect-metadata";
+import { Container } from "typedi";
 
-import { AppDataSource } from './data-source';
-AppDataSource.initialize()
-    .then(() => {
-      // here you can start to work with your database
-    })
-    .catch((error) => console.log(error))
+import TranslationController from './module/translation/controllers/translation.controller';
+const translationController = Container.get(TranslationController);
 
 dotenv.config();
 
 const app: Express = express();
 const port = process.env.PORT || 3000;
+
+app.get('/translate', (req, res) => translationController.translate(req, res));
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Express + TypeScript Server");
