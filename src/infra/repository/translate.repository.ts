@@ -1,7 +1,7 @@
 import { DataSource, Repository } from "typeorm";
 import { ITranslateRepository } from "@/infra/repository/interface.translate.repository";
 import { TranslationInput } from "../../IUseCaseTranslation";
-import { Translation } from "../../models/Translation";
+import { Translation } from "../../model/Translation";
 import { Service } from "typedi";
 import { DBConnector } from "../../data-source";
 

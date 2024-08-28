@@ -1,7 +1,7 @@
 import translate from '@iamtraction/google-translate';
 import { Service } from "typedi";
 import { IGoogleService } from "./interface.google.service";
-import { Translation } from "../../models/Translation";
+import { Translation } from "../../model/Translation";
 
 @Service()
 export class GoogleService implements IGoogleService {

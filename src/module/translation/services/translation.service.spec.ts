@@ -2,7 +2,7 @@ import pick from 'lodash.pick';
 import { IGoogleService } from '../../../infra/google/interface.google.service';
 import { ITranslateRepository } from '@/infra/repository/interface.translate.repository';
 import { TranslationInput } from '../../../IUseCaseTranslation';
-import { Translation } from '../../../models/Translation';
+import { Translation } from '../../../model/Translation';
 import { TranslationService } from './translation.service';
 
 const translationInDb = {

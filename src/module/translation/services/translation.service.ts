@@ -2,7 +2,7 @@ import { Inject, Service } from 'typedi';
 import { ITranslateRepository } from '@/infra/repository/interface.translate.repository';
 import { IGoogleService } from '../../../infra/google/interface.google.service';
 import { IUseCaseTranslation, TranslationInput } from '../../../IUseCaseTranslation';
-import { Translation } from '../../../models/Translation';
+import { Translation } from '../../../model/Translation';
 import { TranslateRepository } from '../../../infra/repository/translate.repository';
 import { GoogleService } from '../../../infra/google/google.service';
 

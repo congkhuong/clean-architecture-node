@@ -3,7 +3,7 @@ import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
 import { Container } from "typedi";
 
-import TranslationController from './module/translation/controllers/translation.controller';
+import TranslationController from './adapter/controller/translation.controller';
 const translationController = Container.get(TranslationController);
 
 dotenv.config();

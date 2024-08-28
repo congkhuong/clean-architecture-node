@@ -1,15 +1,13 @@
 import { Inject, Service } from "typedi";
 import { Request, Response } from "express";
-import { TranslationService } from "../services/translation.service";
-import { Translation } from "@/models/Translation";
+import { TranslationService } from "../../module/translation/services/translation.service";
+import { Translation } from "@/model/Translation";
 
 @Service()
 export default class TranslationController {
-
     constructor(
         @Inject(() => TranslationService) public translationService: TranslationService,
     ) {
-        // TranslationCo
     }
 
     translate = async (request: Request, response: Response): Promise<Translation | any> => {

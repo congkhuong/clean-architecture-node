@@ -1,12 +1,13 @@
 import { DataSource } from "typeorm";
-import { Translation } from "./models/Translation";
+import { Translation } from "./model/Translation";
 import { Service } from "typedi";
   
 @Service()
 export class DBConnector {
     public source: DataSource; 
 
-    public constructor() {
+    constructor() {
+        console.log('DBConnector')
         this.init();
     }
 
@@ -25,10 +26,5 @@ export class DBConnector {
             migrations: [],
         });
 
-        this.source.initialize()
-            .then(() => {
-                console.log('okay')
-                // here you can start to work with your database
-            })
-            .catch((error) => console.log(error))};
+        this.source.initialize().catch((error) => console.log(error))};
 }

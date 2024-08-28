@@ -1,6 +1,6 @@
 import { DeepPartial, Repository } from "typeorm";
 import { TranslationInput } from "../../IUseCaseTranslation";
-import { Translation } from "@/models/Translation";
+import { Translation } from "@/model/Translation";
 
 export interface ITranslateRepository {
     getTranslate(input: TranslationInput): Promise<Translation | null>;

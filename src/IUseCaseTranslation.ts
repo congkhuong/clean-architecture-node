@@ -1,4 +1,4 @@
-import { Translation } from "./models/Translation";
+import { Translation } from "./model/Translation";
 
 export interface TranslationInput {
     text: string;
