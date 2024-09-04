@@ -14,4 +14,4 @@
 - Define Entity
 - Handle enterprise business rule
 
-![Kiku](assets/CleanArchitecture.jpg)
+![CleanArchitecture Image from martinfowler](assets/CleanArchitecture.jpg)
