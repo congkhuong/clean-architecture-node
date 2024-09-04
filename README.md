@@ -14,4 +14,4 @@
 - Define Entity
 - Handle enterprise business rule
 
-![alt text](http://url/to/img.png)
+![Kiku](assets/CleanArchitecture.jpg)
