@@ -1,15 +1,13 @@
 import { Inject, Service } from 'typedi';
 import { ITranslateRepository } from '@/infra/repository/interface.translate.repository';
-import { IGoogleService } from '../../../infra/google/interface.google.service';
-import { IUseCaseTranslation, TranslationInput } from '../../../IUseCaseTranslation';
-import { Translation } from '../../../model/Translation';
-import { TranslateRepository } from '../../../infra/repository/translate.repository';
-import { GoogleService } from '../../../infra/google/google.service';
+import { IGoogleService } from '../infra/google/interface.google.service';
+import { TranslationInput } from '../IUseCaseTranslation';
+import { Translation } from '../model/Translation';
+import { TranslateRepository } from '../infra/repository/translate.repository';
+import { GoogleService } from '../infra/google/google.service';
 
-
-// Move logic to TranslateUseCase
 @Service()
-export class TranslationService implements IUseCaseTranslation {
+export class TranslateUseCase {
     constructor(
         @Inject(() => TranslateRepository) public repo: ITranslateRepository,
         @Inject(() => GoogleService) public googleService: IGoogleService,
@@ -32,9 +30,5 @@ export class TranslationService implements IUseCaseTranslation {
         }
 
         return translation;
-    }
-
-    async fetchHistories(): Promise<Translation[]> {
-        return [] as any;
     }
 }
